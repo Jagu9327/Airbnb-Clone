@@ -1,25 +1,22 @@
-import { useState } from "react";
-import "./App.css";
-import { list, list2, list3 } from "./assets/cards.list";
-import Cards from "./components/Cards";
-import Filter from "./components/Filter";
-import Header from "./components/Header";
+import React from 'react';
+import './App.css';
+import { useSelector } from 'react-redux';
+import Login from './components/auth/Login';
+import Quora from './components/Quora';
+
 
 function App() {
-    const [selectedFilter, setSelectedFilter] = useState(0);
-    return ( 
-    <div className="App">
-            <Header />
-            <Filter
-                selectedFilter={selectedFilter}
-                setSelectedFilter={setSelectedFilter}
 
-            />
-            {selectedFilter == 0 ? <Cards list={list} /> : <Cards list={list2} />}
+    const user = useSelector
 
-    </div>
+    return (
+        <div className="App">
+            {user ? (<Quora />) : (<Login />)}
+
+        </div>
     );
 }
 
 export default App;
+
 
